@@ -1,2 +1,2 @@
-# ProjetoGCP
-Repositório do Projeto de Gerenciamento de Conta Pessoal - USJT A3
+# ProjetoCFP
+Repositório do Projeto de Controle Financeiro Pessoal - USJT A3
