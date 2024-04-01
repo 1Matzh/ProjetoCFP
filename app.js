@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 const userController = new UserController();
 
-// [Login] Rotas para funcionalidade do CRUD de Usuários
+// Rotas para funcionalidade do Login
 app.post("/users/register", (req, res) => userController.registerUser(req, res));
 app.post("/users/login", (req, res) => userController.loginUser(req, res));
 app.get("/users", (req, res) => userController.getAllUsers(req, res));
