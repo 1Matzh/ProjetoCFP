@@ -8,6 +8,15 @@ class UserController {
         res.json(user);
     }
 
+    // login using userDTO
+    loginUser(req, res) {
+        const userDTO = req.body;
+        const user = userService.login(userDTO);
+
+        if(!user) return res.status(404).send('User does not exist');
+        res.json(user);
+    }
+
     getAllUsers(req, res) {
         const users = userService.findAll();
         res.json(users);
@@ -17,9 +26,7 @@ class UserController {
         const { id } = req.params;
         const user = userService.findOne(id);
 
-        if(!user) {
-            return res.status(404).send('register not found');
-        }
+        if(!user) return res.status(404).send('register not found');
         res.json(user);
     }
 
