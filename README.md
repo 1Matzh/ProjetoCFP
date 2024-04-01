@@ -1,4 +1,4 @@
-# ProjetoCFP
+# Projeto de Controle Financeiro Pessoal
 
 ## Preparando o ambiente
 
