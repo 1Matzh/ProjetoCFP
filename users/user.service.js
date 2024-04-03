@@ -24,18 +24,18 @@ class UserService {
     }
 
     login(userDTO) {
-        const user = users.find(
-            (user) => user.email === userDTO.email && user.password === userDTO.password
-        );
+        const user = users.find((user) => user.email === userDTO.email && user.password === userDTO.password)
         if (!user) return null;
+        return new UserDTO(user);
     }
 
-    update(token, userDTO) {
-        const decoded = jwt.verify(token, secretKey);
-        const userIndex = users.findIndex(decoded.userId);
+    update(id, userDTO) {
+        userDTO.id = id;
+        const userIndex = users.findIndex((user) => user.id === id);
         if (userIndex === -1) return null;
-        users[userIndex] = new User(userDTO);
-        return users[userIndex];
+        const updatedUser = new User(userDTO);
+        users[userIndex] = updatedUser;
+        return updatedUser;
     }
 
     remove(id) {

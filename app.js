@@ -9,12 +9,13 @@ app.use(bodyParser.json());
 
 const userController = new UserController();
 
-// Rotas para funcionalidade do Login
+// Rotes for user CRUD functionality
 app.post("/users/register", (req, res) => userController.registerUser(req, res));
 app.post("/users/login", (req, res) => userController.loginUser(req, res));
+app.put("/users/update/:id", (req, res) => userController.updateUser(req, res));
 
 app.get("/users", (req, res) => userController.getAllUsers(req, res));
 
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });

@@ -4,15 +4,23 @@ const userService = new UserService();
 class UserController {
     registerUser(req, res) {
         const userDTO = req.body;
-        const user = userService.register(userDTO);
-        res.status(201).json(user);
+        const register = userService.register(userDTO);
+        res.status(201).json(register);
     }
 
     loginUser(req, res) {
         const userDTO = req.body;
-        const user = userService.login(userDTO);
-        if (!user) return res.status(404).send('Email or password invalid');
-        res.status(200).json(user);
+        const login = userService.login(userDTO);
+        if (!login) return res.status(404).send('Email or password invalid');
+        res.status(200).json(login);
+    }
+
+    updateUser(req, res) {
+        const { id } = req.params;
+        const userDTO = req.body;
+        const update = userService.update(id, userDTO);
+        if (!update) return res.status(404).send('User not found');
+        res.status(204).send(update);
     }
 
     getAllUsers(req, res) {
