@@ -28,15 +28,14 @@ class UserService {
             (user) => user.email === userDTO.email && user.password === userDTO.password
         );
         if (!user) return null;
-        return new UserDTO(user);
     }
 
-    update(id, email, password) {
-        const userIndex = users.findIndex((user) => user.id === id);
+    update(token, userDTO) {
+        const decoded = jwt.verify(token, secretKey);
+        const userIndex = users.findIndex(decoded.userId);
         if (userIndex === -1) return null;
-        const updatedUser = { id, email, password };
-        users[userIndex] = updatedUser;
-        return updatedUser;
+        users[userIndex] = new User(userDTO);
+        return users[userIndex];
     }
 
     remove(id) {
