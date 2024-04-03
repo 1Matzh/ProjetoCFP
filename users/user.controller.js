@@ -5,7 +5,7 @@ class UserController {
     registerUser(req, res) {
         const userDTO = req.body;
         const register = userService.register(userDTO);
-        if (!register) return res.status(404).send('User already exists');
+        if (!register) return res.status(404).send('Invalid email or password');
         res.status(201).json({
             message: "User created successfully!",
             service: register
@@ -15,7 +15,7 @@ class UserController {
     loginUser(req, res) {
         const userDTO = req.body;
         const login = userService.login(userDTO);
-        if (!login) return res.status(404).send('Email or password invalid');
+        if (!login) return res.status(404).send('Invalid email or password');
         res.status(200).json({
             message: "User logged successfully!",
             service: login

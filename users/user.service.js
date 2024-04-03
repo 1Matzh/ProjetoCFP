@@ -15,8 +15,14 @@ const users = [
     },
 ];
 
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
 class UserService {
     register(userDTO) {
+        if (!validateEmail(userDTO.email)) return null;
         userDTO.id = uuidv4();
         const newUser = new User(userDTO);
         users.push(newUser);
