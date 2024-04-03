@@ -20,7 +20,7 @@ class UserController {
         const userDTO = req.body;
         const update = userService.update(id, userDTO);
         if (!update) return res.status(404).send('User not found');
-        res.status(204).send(update);
+        res.status(200).json(update);
     }
 
     getAllUsers(req, res) {

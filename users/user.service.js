@@ -33,7 +33,14 @@ class UserService {
         userDTO.id = id;
         const userIndex = users.findIndex((user) => user.id === id);
         if (userIndex === -1) return null;
-        const updatedUser = new User(userDTO);
+    
+        const updatedUser = users[userIndex];
+        for (const key in userDTO) {
+            if (userDTO[key] !== undefined) {
+                updatedUser[key] = userDTO[key];
+            }
+        }
+        
         users[userIndex] = updatedUser;
         return updatedUser;
     }
