@@ -47,17 +47,12 @@ class UserService {
 
     remove(id) {
         const userIndex = users.findIndex((user) => user.id === id);
-        if (userIndex === -1) return false;
-        users.splice(userIndex, 1);
-        return true;
+        if (userIndex === -1) return null;
+        return users.splice(userIndex, 1)[0];
     }
 
     findAll() {
         return users.map((user) => new UserDTO(user));
-    }
-
-    findOne(id) {
-        return users.find((user) => user.id === id);
     }
 }
 

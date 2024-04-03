@@ -13,6 +13,7 @@ const userController = new UserController();
 app.post("/users/register", (req, res) => userController.registerUser(req, res));
 app.post("/users/login", (req, res) => userController.loginUser(req, res));
 app.put("/users/update/:id", (req, res) => userController.updateUser(req, res));
+app.delete("/users/remove/:id", (req, res) => userController.removeUser(req, res));
 
 app.get("/users", (req, res) => userController.getAllUsers(req, res));
 

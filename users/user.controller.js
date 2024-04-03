@@ -5,14 +5,21 @@ class UserController {
     registerUser(req, res) {
         const userDTO = req.body;
         const register = userService.register(userDTO);
-        res.status(201).json(register);
+        if (!register) return res.status(404).send('User already exists');
+        res.status(201).json({
+            message: "User created successfully!",
+            service: register
+        });
     }
 
     loginUser(req, res) {
         const userDTO = req.body;
         const login = userService.login(userDTO);
         if (!login) return res.status(404).send('Email or password invalid');
-        res.status(200).json(login);
+        res.status(200).json({
+            message: "User logged successfully!",
+            service: login
+        });
     }
 
     updateUser(req, res) {
@@ -20,26 +27,25 @@ class UserController {
         const userDTO = req.body;
         const update = userService.update(id, userDTO);
         if (!update) return res.status(404).send('User not found');
-        res.status(200).json(update);
+        res.status(200).json({
+            message: "User updated successfully",
+            service: update
+        });
+    }
+
+    removeUser(req, res) {
+        const { id } = req.params;
+        const remove = userService.remove(id);
+        if (!remove) return res.status(404).send('User not found');
+        res.status(200).json({
+            message: "User removed successfully",
+            service: remove
+        });
     }
 
     getAllUsers(req, res) {
         const users = userService.findAll();
         res.json(users);
-    }
-
-    getUserById(req, res) {
-        const { id } = req.params;
-        const user = userService.findOne(id);
-        if (!user) return res.status(404).send('register not found');
-        res.json(user);
-    }
-
-    deleteUser(req, res) {
-        const { id } = req.params;
-        const result = userService.remove(id);
-        if (!result) return res.status(404).send('User not found');
-        res.status(204).send();
     }
 }
 
