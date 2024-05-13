@@ -1,2 +1,4 @@
-# Ignorar pastas e arquivos
 node_modules
+.env
+dist
+test
