@@ -13,13 +13,13 @@ export class UserService {
   ) {}
 
   async findAll(): Promise<User[]> {
-    return await this.userRepository.find({ relations: ['filiacoes'] });
+    return await this.userRepository.find({ relations: ['accounts'] });
   }
 
   async findOne(id: number): Promise<User> {
     const user = await this.userRepository.findOne({
       where: { id_user: id },
-      relations: ['filiacoes'],
+      relations: ['accounts'],
     });
 
     if (!user) {
