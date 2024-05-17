@@ -13,8 +13,8 @@ export class AccountsService {
     private userService: UserService
   ) {}
 
-  async create(createAccountDto: CreateAccountDto): Promise<Accounts> {
-    const user = await this.userService.findOne(createAccountDto.userId);
+  async create(userId: number, createAccountDto: CreateAccountDto): Promise<Accounts> {
+    const user = await this.userService.findOne(userId);
     if (!user) {
       throw new NotFoundException(`Usuário não encontrado.`);
     }
