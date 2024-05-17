@@ -10,6 +10,9 @@ export class Accounts {
   @Column()
   conta: string;
 
+  @Column()
+  saldo: number;
+
   @ManyToOne(() => User, (user) => user.accounts)
   user: User;
 }
