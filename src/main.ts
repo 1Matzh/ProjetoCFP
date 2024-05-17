@@ -9,6 +9,7 @@ async function bootstrap() {
     .setTitle('Projeto CFP')
     .setDescription('API para controle financeiro pessoal')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

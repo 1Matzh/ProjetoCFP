@@ -6,10 +6,6 @@ export class CreateAccountDto {
   @ApiProperty({ description: 'Nome da conta financeira' })
   @IsString()
   conta: string;
-
-  @ApiProperty({ description: 'Id do usuário' })
-  @IsInt()
-  userId: number;
 }
 
 export class UpdateAccountDto extends CreateAccountDto {}
