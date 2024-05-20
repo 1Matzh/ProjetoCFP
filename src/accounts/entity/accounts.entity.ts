@@ -10,7 +10,7 @@ export class Accounts {
   @Column()
   conta: string;
 
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2, default: 0 })
   saldo: number;
 
   @ManyToOne(() => User, (user) => user.accounts)

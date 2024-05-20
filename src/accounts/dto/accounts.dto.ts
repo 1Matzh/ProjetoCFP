@@ -1,4 +1,4 @@
-import { IsString, IsInt, IsDecimal } from 'class-validator';
+import { IsString, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { PartialType } from '@nestjs/mapped-types';
 
@@ -8,7 +8,7 @@ export class CreateAccountDto {
   conta: string;
 
   @ApiProperty({ description: 'Saldo da conta financeira' })
-  @IsDecimal()
+  @IsNumber()
   saldo: number;
 }
 
