@@ -7,19 +7,19 @@ export class Transactions {
   id: number;
 
   @Column()
-  type: string;
+  tipo: string;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  amount: number;
+  valor: number;
 
   @Column()
-  description: string;
+  descricao: string;
 
   @Column()
-  category: string;
+  categoria: string;
 
   @CreateDateColumn()
-  date: Date;
+  data: Date;
 
   @ManyToOne(() => Accounts, account => account.transactions)
   account: Accounts;
