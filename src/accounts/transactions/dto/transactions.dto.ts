@@ -2,7 +2,7 @@ import { IsString, IsNumber, IsEnum } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateTransactionDto {
-  @ApiProperty({ description: 'Tipo da transação (despesa, receita, etc.)' })
+  @ApiProperty({ description: 'Tipo da transação' })
   @IsString()
   tipo: string;
 
