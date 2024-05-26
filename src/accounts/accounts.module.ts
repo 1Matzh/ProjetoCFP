@@ -7,12 +7,13 @@ import { AccountsService } from './service/accounts.service';
 import { TransactionsService } from './transactions/service/transactions.service';
 import { TransactionsController } from './transactions/controller/transactions.controller';
 import { UserModule } from 'src/user/user.module';
-import { ReportsService } from '../service/reports.service';
+import { ReportsService } from './transactions/report/service/reports.service';
+import { ReportsController } from './transactions/report/controller/report.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Accounts, Transactions]), forwardRef(() => UserModule)],
-  providers: [AccountsService, TransactionsService],
-  controllers: [AccountsController, TransactionsController],
-  exports: [AccountsService, TransactionsService],
+  providers: [AccountsService, TransactionsService, ReportsService],
+  controllers: [AccountsController, TransactionsController, ReportsController],
+  exports: [AccountsService, TransactionsService, ReportsService],
 })
 export class AccountsModule {}
